@@ -138,16 +138,31 @@
   } else {
     animateCounters();
   }
-  document.getElementById('burger').addEventListener('click',function(){
-    const links=document.querySelector('header.site nav.links');
-    links.classList.toggle('open');
+  // Menú mobile
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('header.site nav.links');
+  
+  burger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    navLinks.classList.toggle('open');
     this.classList.toggle('open');
   });
-  document.querySelectorAll('header.site nav.links a').forEach(link=>{
-    link.addEventListener('click',()=>{
-      document.querySelector('header.site nav.links').classList.remove('open');
-      document.getElementById('burger').classList.remove('open');
+  
+  // Cerrar menú al hacer clic en un link
+  document.querySelectorAll('header.site nav.links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
     });
+  });
+  
+  // Cerrar menú al hacer clic afuera
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('header.site')) {
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+    }
   });
 
   // Scroll reveal with stagger

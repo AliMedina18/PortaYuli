@@ -215,9 +215,9 @@
   .foot .copy{text-align:center;padding-bottom:30px;color:var(--muted-2);font-size:.84rem;border-top:1px solid var(--line);padding-top:24px}
 
   @media(max-width:900px){
-    nav.links{display:none;position:absolute;top:78px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);z-index:50;max-height:calc(100vh - 78px);overflow-y:auto;transition:all .3s ease}
-    nav.links.open{display:flex}
-    nav.links a{padding:14px 0;border-bottom:1px solid var(--line-2);font-size:1rem;color:var(--ink)}
+    nav.links{display:none;position:absolute;top:78px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);z-index:49;max-height:calc(100vh - 78px);overflow-y:auto;transition:display .3s ease}
+    nav.links.open{display:flex !important}
+    nav.links a{padding:14px 0;border-bottom:1px solid var(--line-2);font-size:1rem;color:var(--ink);display:block}
     nav.links a:first-child{padding-top:20px}
     nav.links a:last-child{border-bottom:none}
     .nav .tel{display:none}
