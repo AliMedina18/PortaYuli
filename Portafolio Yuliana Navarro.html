@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuliana Navarro · Comunicación & Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF5EB;
+    --surface:#F6E8D0;
+    --surface-2:#EFDCC0;
+    --ink:#2A2420;
+    --ink-2:#39322B;
+    --text:#3A332B;
+    --muted:#7C7464;
+    --muted-2:#A0937E;
+    --line:#EBDDC7;
+    --line-2:#DCCBB0;
+    --white:#fff;
+    --cream:#FAE7C9;
+    --clay:#E2B596;
+    --honey:#E9A53C;
+    --honey-d:#BC7A1C;
+    --accent:#C77A33;
+    --accent-d:#A86322;
+    --accent-soft:#FAE7C9;
+    --gold:#E9A53C;
+    --r-lg:22px;
+    --r-md:16px;
+    --r-sm:12px;
+    --maxw:1180px;
+    --pad:clamp(20px,5vw,40px);
+    --ff-head:"Bricolage Grotesque",system-ui,sans-serif;
+    --ff-body:"Manrope",system-ui,sans-serif;
+    --ff-mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  h1,h2,h3,h4{font-family:var(--ff-head);font-weight:700;line-height:1.04;letter-spacing:-0.02em;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .eyebrow{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-d)}
+
+  .btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--ff-body);font-weight:600;font-size:.95rem;border:none;cursor:pointer;border-radius:999px;padding:15px 26px;transition:transform .18s ease,background .18s ease,box-shadow .18s ease;white-space:nowrap}
+  .btn-dark{background:var(--ink);color:#F6F3EC}
+  .btn-dark:hover{background:#000;transform:translateY(-2px);box-shadow:0 12px 28px -14px rgba(0,0,0,.55)}
+  .btn-accent{background:linear-gradient(135deg,var(--honey),#DD9226);color:#3A2710}
+  .btn-accent:hover{filter:brightness(1.05);transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(188,122,28,.65)}
+  .btn-accent .ico{background:rgba(58,39,16,.16)}
+  .btn-accent .ico svg{stroke:#3A2710}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2)}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:#F6F3EC}
+  .btn .ico{width:30px;height:30px;border-radius:999px;background:rgba(255,255,255,.16);display:grid;place-items:center;margin-right:-14px;margin-left:4px}
+  .btn .ico svg{width:14px;height:14px;stroke:#F6F3EC;fill:none;stroke-width:2}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo .mark{width:42px;height:42px;border-radius:11px;background:var(--ink);color:#F6F3EC;display:grid;place-items:center;font-family:var(--ff-head);font-weight:700;font-size:1.05rem;letter-spacing:-.04em}
+  .logo .name{font-family:var(--ff-head);font-weight:700;font-size:1.06rem;letter-spacing:-.02em;color:var(--ink);line-height:1.05}
+  .logo .name small{display:block;font-family:var(--ff-mono);font-weight:400;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
+  nav.links{display:flex;gap:30px}
+  nav.links a{font-size:.94rem;font-weight:500;color:var(--muted);transition:color .15s}
+  nav.links a:hover{color:var(--ink)}
+  .nav .tel{display:flex;align-items:center;gap:9px;font-weight:600;font-size:.94rem;color:var(--ink)}
+  .nav .tel svg{width:17px;height:17px;stroke:var(--ink);fill:none;stroke-width:1.8}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+
+  /* Hero */
+  .hero{padding-top:clamp(36px,6vw,64px);padding-bottom:clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800}
+  .hero .sub{margin-top:14px;font-family:var(--ff-mono);font-size:.82rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+  .hero .mission{margin-top:28px;font-size:1.18rem;line-height:1.55;color:var(--text);max-width:30ch;font-weight:500}
+  .hero .mission b{color:var(--ink);font-weight:700}
+  .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-photo-wrap{position:relative;width:100%;max-width:440px;margin-inline:auto}
+  .hero-photo{width:100%;aspect-ratio:1/1.18;object-fit:cover;object-position:50% 18%;border-radius:var(--r-lg);background:var(--surface-2)}
+  .name-badge{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(25,23,20,.78);backdrop-filter:blur(8px);color:#F6F3EC;border-radius:14px;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .name-badge h3{color:#fff;font-size:1.06rem;font-weight:700;line-height:1.1}
+  .name-badge p{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:#B7B0A4;margin-top:4px}
+  .name-badge .dot{width:9px;height:9px;border-radius:999px;background:#7CD17C;flex:none;box-shadow:0 0 0 4px rgba(124,209,124,.18)}
+
+  .sec{padding-block:clamp(54px,8vw,100px)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
+  .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.1rem)}
+  .sec-head .lead{max-width:42ch;color:var(--muted);font-size:1.02rem}
+
+  /* About */
+  .tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+  .tab{font-family:var(--ff-body);font-weight:600;font-size:.95rem;border:1.5px solid var(--line-2);background:transparent;color:var(--muted);border-radius:999px;padding:12px 24px;cursor:pointer;transition:all .18s}
+  .tab:hover{color:var(--ink);border-color:var(--ink)}
+  .tab.active{background:var(--honey);color:#3A2710;border-color:var(--honey)}
+  .about-grid{display:grid;grid-template-columns:1fr .82fr;gap:clamp(30px,5vw,60px);align-items:start}
+  .about-intro{font-size:1.14rem;line-height:1.55;color:var(--text);margin-bottom:26px;max-width:46ch}
+  .panel{display:none;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  details.acc{border-top:1px solid var(--line-2)}
+  details.acc:last-child{border-bottom:1px solid var(--line-2)}
+  details.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 2px;font-family:var(--ff-head);font-weight:600;font-size:1.08rem;color:var(--ink)}
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc summary .pm{position:relative;width:18px;height:18px;flex:none}
+  details.acc summary .pm::before,details.acc summary .pm::after{content:"";position:absolute;background:var(--ink);border-radius:2px;transition:transform .25s}
+  details.acc summary .pm::before{left:0;top:8px;width:18px;height:2px}
+  details.acc summary .pm::after{left:8px;top:0;width:2px;height:18px}
+  details.acc[open] summary .pm::after{transform:scaleY(0)}
+  details.acc .acc-body{padding:0 2px 22px;color:var(--muted);font-size:.97rem;line-height:1.65}
+  details.acc .acc-body .yr{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.05em;color:var(--muted-2);margin-bottom:8px}
+  details.acc .acc-body strong{color:var(--text);font-weight:600}
+  .exp-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .exp-list li{border-top:1px solid var(--line-2);padding:18px 2px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline}
+  .exp-list li:last-child{border-bottom:1px solid var(--line-2)}
+  .exp-list .yr{font-family:var(--ff-mono);font-size:.74rem;color:var(--muted-2);white-space:nowrap}
+  .exp-list h4{font-size:1.05rem;font-weight:600}
+  .exp-list p{font-size:.93rem;color:var(--muted);margin-top:4px}
+  .area-chips{display:flex;flex-wrap:wrap;gap:12px}
+  .area-chips span{border:1.5px solid var(--line-2);border-radius:999px;padding:11px 20px;font-weight:600;font-size:.95rem;color:var(--ink)}
+
+  /* Highlights panel (about right) */
+  .creds{background:var(--ink);color:#EEEAE1;border-radius:var(--r-lg);padding:30px 30px 26px;position:sticky;top:100px}
+  .creds .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(233,192,122,.4);border-radius:999px;padding:7px 13px}
+  .creds h3{color:#fff;font-size:1.45rem;margin-top:18px;line-height:1.12}
+  .creds .sub{color:#B7B0A4;font-size:.92rem;margin-top:10px;line-height:1.5}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.1);border-radius:14px;overflow:hidden;margin-top:24px}
+  .stats div{background:var(--ink);padding:18px 16px}
+  .stats .n{font-family:var(--ff-head);font-weight:700;font-size:1.7rem;color:#fff;letter-spacing:-.02em}
+  .stats .l{font-size:.74rem;color:#9b958a;margin-top:3px;line-height:1.3}
+  .brands{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 16px}
+  .brands span{font-family:var(--ff-head);font-weight:600;font-size:.92rem;color:#cbc5ba}
+
+  /* Services */
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .svc{background:#FFFDF9;border:1px solid rgba(120,90,40,.07);border-radius:var(--r-md);padding:28px 24px 26px;display:flex;flex-direction:column;min-height:300px;box-shadow:0 10px 30px -22px rgba(120,80,30,.4);transition:transform .2s,box-shadow .2s}
+  .svc:hover{transform:translateY(-4px);box-shadow:0 26px 48px -28px rgba(120,80,30,.5)}
+  .svc .num{font-family:var(--ff-mono);font-size:.72rem;color:var(--muted-2);letter-spacing:.1em}
+  .svc h3{font-size:1.16rem;margin-top:16px;line-height:1.15}
+  .svc p{font-size:.91rem;color:var(--muted);margin-top:12px;flex:1}
+  .svc .lnk{margin-top:18px;font-weight:600;font-size:.88rem;color:var(--accent-d);display:inline-flex;align-items:center;gap:7px}
+  .svc .lnk svg{width:15px;height:15px;stroke:var(--accent-d);fill:none;stroke-width:2;transition:transform .2s}
+  .svc:hover .lnk svg{transform:translateX(4px)}
+
+  /* Projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,26px)}
+  .proj{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .proj:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(0,0,0,.45)}
+  .proj .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;background:#1a1a1a}
+  .proj .body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+  .proj .tag{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+  .proj h3{font-size:1.34rem;margin-top:10px}
+  .proj .role{font-size:.84rem;color:var(--muted-2);margin-top:5px;font-weight:600}
+  .proj p{font-size:.95rem;color:var(--muted);margin-top:12px;line-height:1.55;flex:1}
+  .proj .lnk{margin-top:16px;font-weight:600;font-size:.88rem;color:var(--accent-d);display:inline-flex;align-items:center;gap:7px}
+  .proj .lnk svg{width:15px;height:15px;stroke:var(--accent-d);fill:none;stroke-width:2;transition:transform .2s}
+  .proj:hover .lnk svg{transform:translateX(4px)}
+  /* text-only project card */
+  .proj.text{background:var(--ink);color:#EEEAE1}
+  .proj.text .body{justify-content:space-between}
+  .proj.text h3{color:#fff;font-size:1.5rem}
+  .proj.text .tag{color:#E9C07A}
+  .proj.text p{color:#B7B0A4}
+  .proj.text .role{color:#9b958a}
+  .proj.text .lnk{color:#fff}
+  .proj.text .lnk svg{stroke:#fff}
+
+  /* Form */
+  .form-band{background:linear-gradient(135deg,var(--cream),#EBCBA8);border-radius:var(--r-lg);padding:clamp(30px,5vw,58px)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,56px);align-items:center}
+  .form-grid h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
+  .form-grid .lead{color:var(--muted);margin-top:18px;max-width:40ch;font-size:1rem}
+  form.consult{display:flex;flex-direction:column;gap:14px}
+  form.consult input{font-family:var(--ff-body);font-size:1rem;background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:16px 24px;color:var(--text);transition:border .15s}
+  form.consult input::placeholder{color:var(--muted-2)}
+  form.consult input:focus{outline:none;border-color:var(--accent)}
+  .radio-q{font-weight:700;font-family:var(--ff-head);margin-top:6px;color:var(--ink)}
+  .radio-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:2px}
+  .radio-row label{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:.95rem;color:var(--text)}
+  .radio-row input{appearance:none;width:20px;height:20px;border:1.5px solid var(--line-2);border-radius:999px;display:grid;place-items:center;cursor:pointer;transition:border .15s}
+  .radio-row input:checked{border-color:var(--ink)}
+  .radio-row input:checked::after{content:"";width:10px;height:10px;border-radius:999px;background:var(--ink)}
+  form.consult .btn{align-self:flex-start;margin-top:12px}
+  .form-note{font-size:.82rem;color:var(--muted-2);margin-top:4px}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:stretch}
+  .contact-cta{background:var(--ink);color:#EEEAE1;border-radius:var(--r-lg);padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;justify-content:space-between;min-height:300px}
+  .contact-cta h2{color:#fff;font-size:clamp(2rem,4vw,2.7rem)}
+  .contact-cta p{color:#B7B0A4;margin-top:14px;font-size:1rem;max-width:30ch}
+  .contact-cta .socials{display:flex;gap:12px;margin-top:30px}
+  .contact-cta .socials a{width:50px;height:50px;border-radius:999px;background:rgba(255,255,255,.1);display:grid;place-items:center;transition:transform .15s,background .15s}
+  .contact-cta .socials a:hover{transform:translateY(-3px);background:rgba(255,255,255,.2)}
+  .contact-cta .socials svg{width:20px;height:20px;fill:#F6F3EC}
+  .ci-list{display:flex;flex-direction:column;justify-content:center}
+  .ci-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line-2)}
+  .ci-row:last-child{border-bottom:1px solid var(--line-2)}
+  .ci-row .ic{width:44px;height:44px;border-radius:12px;background:var(--surface);flex:none;display:grid;place-items:center}
+  .ci-row .ic svg{width:19px;height:19px;stroke:var(--ink);fill:none;stroke-width:1.8}
+  .ci-row .lab{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+  .ci-row .val{font-weight:600;color:var(--ink);font-size:1.04rem;margin-top:2px;word-break:break-word}
+  .ci-row a.val:hover{text-decoration:underline}
+
+  footer.site{border-top:1px solid var(--line);margin-top:clamp(40px,6vw,80px)}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:34px;flex-wrap:wrap}
+  .foot .copy{text-align:center;padding-bottom:30px;color:var(--muted-2);font-size:.84rem;border-top:1px solid var(--line);padding-top:24px}
+
+  @media(max-width:900px){
+    nav.links,.nav .tel{display:none}
+    .burger{display:flex}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo-wrap{order:-1}
+    .about-grid{grid-template-columns:1fr}
+    .creds{position:static}
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .proj-grid{grid-template-columns:1fr 1fr}
+    .form-grid,.contact-grid{grid-template-columns:1fr}
+    .sec-head{flex-direction:column;align-items:flex-start}
+    .exp-list li{grid-template-columns:1fr;gap:4px}
+  }
+  @media(max-width:560px){
+    .svc-grid,.proj-grid{grid-template-columns:1fr}
+    body{font-size:16px}
+    .stats{grid-template-columns:1fr 1fr}
+  }
+
+  /* Animations */
+  .hero-photo-wrap::before{content:"";position:absolute;inset:-12%;background:radial-gradient(55% 55% at 68% 26%,rgba(233,165,60,.34),transparent 72%);filter:blur(26px);z-index:-1}
+  #servicios{position:relative;isolation:isolate}
+  #servicios::before{content:"";position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;background:linear-gradient(180deg,#FAE7C9,#F4DCBA);z-index:-1}
+  .proj .thumb{transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .proj:hover .thumb{transform:scale(1.045)}
+  .name-badge .dot{background:var(--honey);box-shadow:0 0 0 4px rgba(233,165,60,.22);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(233,165,60,.22)}50%{box-shadow:0 0 0 8px rgba(233,165,60,.06)}}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1)}
+    .reveal.in{opacity:1;transform:none}
+    .hero-photo-wrap{opacity:0;transform:translateY(26px) scale(.98);animation:heroIn 1s cubic-bezier(.22,.61,.36,1) .15s forwards}
+    .hero-left>*{opacity:0;transform:translateY(20px);animation:heroIn .8s cubic-bezier(.22,.61,.36,1) forwards}
+    .hero-left>*:nth-child(1){animation-delay:.05s}
+    .hero-left>*:nth-child(2){animation-delay:.13s}
+    .hero-left>*:nth-child(3){animation-delay:.21s}
+    .hero-left>*:nth-child(4){animation-delay:.29s}
+    .hero-left>*:nth-child(5){animation-delay:.37s}
+    @keyframes heroIn{to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Yuliana Navarro inicio">
+      <span class="mark">YN</span>
+      <span class="name">Yuliana&nbsp;Navarro<small>Comunicación · Marketing</small></span>
+    </a>
+    <nav class="links">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="tel" href="tel:+573112228359">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
+      311&nbsp;222&nbsp;8359
+    </a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <p class="eyebrow">Bogotá, Colombia · Marketing &amp; Comunicación</p>
+      <h1>Comunicación que hace que las cosas pasen.</h1>
+      <p class="sub">Estrategia · Marketing experiencial · Contenido · IA</p>
+      <p class="mission">Construyo <b>ideas que se vuelven experiencias</b> — uniendo personas, propósito e innovación en cada proyecto.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#contacto">Trabajemos juntas <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="btn btn-ghost" href="assets/Yuliana-Navarro-CV.pdf" target="_blank" rel="noopener">Descargar CV</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="assets/yuliana.jpg" alt="Yuliana Navarro">
+      <div class="name-badge">
+        <div>
+          <h3>Yuliana Navarro</h3>
+          <p>Comunicación Comercial · Marketing</p>
+        </div>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="sec wrap" id="sobre">
+  <div class="sec-head"><h2>Sobre mí</h2></div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="exp">Experiencia</button>
+    <button class="tab" data-tab="form">Formación</button>
+    <button class="tab" data-tab="areas">Áreas de trabajo</button>
+  </div>
+
+  <div class="about-grid">
+    <div>
+      <p class="about-intro">Soy profesional en Comunicación Comercial y creo en el poder de la comunicación para inspirar, conectar y hacer que las cosas pasen. He liderado proyectos, eventos y estrategias que unen personas, propósito e innovación.</p>
+
+      <!-- Experiencia -->
+      <div class="panel active" data-panel="exp">
+        <ul class="exp-list">
+          <li><span class="yr">2026</span><div><h4>Project Manager Jr. · Next Marketing Experiencial</h4><p>Marketing experiencial para Davivienda, Seguros Bolívar y Rappi: planeación, ejecución y coordinación de equipos multidisciplinarios.</p></div></li>
+          <li><span class="yr">2025</span><div><h4>Project &amp; Content Manager · Microsoft</h4><p>Estrategia comunicacional para Azure Go-To-Market y mensaje B2B de adopción de IA y nube — con impacto proyectado de más de USD 180M en revenue regional.</p></div></li>
+          <li><span class="yr">2024–25</span><div><h4>Coordinadora In-House · Audio Video Logistic</h4><p>Logística y ejecución técnica de eventos corporativos (Motul, Grupo Aval, Agroexpo), del montaje a la experiencia del asistente.</p></div></li>
+          <li><span class="yr">2023</span><div><h4>Setter Digital · Aprobar sin Trasnochar</h4><p>Gestión de comunidades digitales con conversaciones personalizadas alineadas a la identidad de marca.</p></div></li>
+        </ul>
+      </div>
+
+      <!-- Formación -->
+      <div class="panel" data-panel="form">
+        <details class="acc" open>
+          <summary>Educación<span class="pm"></span></summary>
+          <div class="acc-body">
+            <div class="yr">Formación profesional</div>
+            <strong>SENA</strong> — Tecnóloga en Comunicación Comercial.<br>
+            <strong>SENA</strong> — Marketing Digital (2023).<br>
+            <strong>Bootcamp MinTIC</strong> — Análisis de Datos.<br>
+            <strong>Smart Academia</strong> — Inglés A2–B1 (en curso).
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Reconocimientos<span class="pm"></span></summary>
+          <div class="acc-body">
+            <div class="yr">2025</div>
+            <strong>Ganadora Global · Microsoft Global Hackathon 2025</strong> — proyecto para marketers desarrollado con equipos de cinco países; lideré la estrategia comunicacional y el storytelling de marca.
+          </div>
+        </details>
+        <details class="acc">
+          <summary>Herramientas<span class="pm"></span></summary>
+          <div class="acc-body">
+            <div class="yr">Stack de trabajo</div>
+            Azure · Microsoft 365 · ClickUp · Notion · Google Workspace · Canva · CapCut · Adobe Express · Buffer · Claude &amp; ChatGPT · Metodologías ágiles (SCRUM).
+          </div>
+        </details>
+      </div>
+
+      <!-- Áreas -->
+      <div class="panel" data-panel="areas">
+        <div class="area-chips">
+          <span>Marketing experiencial</span>
+          <span>Estrategia de contenido</span>
+          <span>Marca personal &amp; posicionamiento</span>
+          <span>Comunicación B2B</span>
+          <span>Gestión de proyectos &amp; eventos</span>
+          <span>Brand voice</span>
+          <span>Comunicación con IA</span>
+          <span>Manejo de equipos</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="creds">
+      <span class="badge">★ Ganadora Global</span>
+      <h3>Microsoft Global Hackathon 2025</h3>
+      <p class="sub">Estrategia comunicacional y storytelling de marca en una colaboración multicultural de cinco países.</p>
+      <div class="stats">
+        <div><div class="n">+USD 180M</div><div class="l">impacto proyectado · Azure GTM</div></div>
+        <div><div class="n">80%</div><div class="l">del pipeline anual de Microsoft Américas</div></div>
+        <div><div class="n">5</div><div class="l">países en equipo multicultural</div></div>
+        <div><div class="n">3+ años</div><div class="l">en marketing y comunicación</div></div>
+      </div>
+      <div class="brands">
+        <span>Microsoft</span><span>Next</span><span>MOBE Estudio</span><span>Davivienda</span><span>Rappi</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="sec wrap" id="servicios">
+  <div class="sec-head">
+    <h2>Servicios</h2>
+    <p class="lead">Acompaño marcas y profesionales a comunicar con propósito — de la estrategia a la ejecución.</p>
+  </div>
+  <div class="svc-grid">
+    <article class="svc">
+      <span class="num">01</span>
+      <h3>Estrategia de contenido</h3>
+      <p>Planeación, narrativa y calendario editorial para posicionar tu marca en los canales correctos.</p>
+      <a class="lnk" href="#contacto">Solicitar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="svc">
+      <span class="num">02</span>
+      <h3>Marca personal &amp; posicionamiento</h3>
+      <p>Construcción de voz, mensaje y presencia para líderes y profesionales que quieren destacar.</p>
+      <a class="lnk" href="#contacto">Solicitar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="svc">
+      <span class="num">03</span>
+      <h3>Marketing experiencial</h3>
+      <p>Activaciones y eventos de marca de alto impacto, coordinando equipos y producción de principio a fin.</p>
+      <a class="lnk" href="#contacto">Solicitar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="svc">
+      <span class="num">04</span>
+      <h3>Comunicación &amp; IA</h3>
+      <p>Mensajes B2B y brand voice que conectan innovación tecnológica con propósito humano.</p>
+      <a class="lnk" href="#contacto">Solicitar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="sec wrap" id="proyectos">
+  <div class="sec-head">
+    <h2>Proyectos</h2>
+    <p class="lead">Una selección del trabajo que ha generado marca, conversación y resultados.</p>
+  </div>
+  <div class="proj-grid">
+    <article class="proj">
+      <img class="thumb" src="assets/pernikes.png" alt="Proyecto Pernikes">
+      <div class="body">
+        <span class="tag">Marca · Contenido</span>
+        <h3>Pernikes</h3>
+        <p class="role">Jamonería artesanal · estrategia gráfica</p>
+        <p>Creación de contenidos de marca junto a diseñadores expertos para el posicionamiento digital de una de las marcas líderes del sector, con más de 20 años de experiencia.</p>
+        <a class="lnk" href="https://www.instagram.com/pernikes" target="_blank" rel="noopener">Ver en Instagram <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="proj">
+      <img class="thumb" src="assets/huateque.png" alt="Proyecto Huateque">
+      <div class="body">
+        <span class="tag">Branding · MOBE Estudio</span>
+        <h3>Huateque</h3>
+        <p class="role">Cocina y tradición mexicana</p>
+        <p>Identidad y contenido para una marca gastronómica de raíces mexicanas, construida desde la idea de que la comida tiene el poder de unir a las personas.</p>
+        <a class="lnk" href="assets/mobe-cover.png" target="_blank" rel="noopener">Ver caso <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="proj">
+      <img class="thumb" src="assets/goatfather.png" alt="Proyecto The Goatfather">
+      <div class="body">
+        <span class="tag">Branding · MOBE Estudio</span>
+        <h3>The Goatfather</h3>
+        <p class="role">Suplemento natural de energía</p>
+        <p>Narrativa visual y campaña de contenido para una marca de bienestar de alto rendimiento, donde la imagen no solo informa, también inspira.</p>
+        <a class="lnk" href="assets/mobe-cover.png" target="_blank" rel="noopener">Ver caso <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="proj text">
+      <div class="body">
+        <div>
+          <span class="tag">Producto · Impacto social</span>
+          <h3>JUNA</h3>
+          <p class="role">Microsoft + Fundación Naná · México</p>
+          <p>Aplicación en WhatsApp que detecta microviolencias en las conversaciones. Coordiné el equipo de ingeniería bajo metodología SCRUM, estructurando objetivos, sprints y entregables.</p>
+        </div>
+        <a class="lnk" href="https://cimacnoticias.com.mx/2025/09/12/presentan-juna-herramienta-en-whatsapp-para-detectar-violencia-en-el-noviazgo/" target="_blank" rel="noopener">Leer la nota <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="proj text">
+      <div class="body">
+        <div>
+          <span class="tag">Marca personal · IA</span>
+          <h3>Edmundo Miralles</h3>
+          <p class="role">Director de Innovación &amp; IA · Microsoft Américas</p>
+          <p>Estrategia y comunicación de marca personal, incluyendo el liderazgo de comunicación en el evento DCD LATAM (Cancún) y el posicionamiento de su voz en la industria.</p>
+        </div>
+        <a class="lnk" href="https://www.linkedin.com/in/mundo/" target="_blank" rel="noopener">Ver perfil <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="proj text">
+      <div class="body">
+        <div>
+          <span class="tag">Comunicación B2B</span>
+          <h3>Azure Go-To-Market</h3>
+          <p class="role">Microsoft Américas</p>
+          <p>Mensaje comunicacional B2B para la adopción de IA e infraestructura en la nube, dirigido a las empresas que representan más del 80% del pipeline anual de la región.</p>
+        </div>
+        <a class="lnk" href="#contacto">Conversemos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="sec wrap" id="agenda">
+  <div class="form-band">
+    <div class="form-grid">
+      <div>
+        <h2>Hablemos de tu proyecto</h2>
+        <p class="lead">Cuéntame sobre tu marca o idea. Resolveremos juntas hacia dónde llevar tu comunicación y qué estrategia tiene más sentido para tus objetivos.</p>
+      </div>
+      <form class="consult" id="consultForm">
+        <input type="text" name="nombre" placeholder="Nombre y apellido" required>
+        <input type="text" name="contacto" placeholder="Teléfono o correo" required>
+        <p class="radio-q">¿Cómo te contacto?</p>
+        <div class="radio-row">
+          <label><input type="radio" name="via" value="WhatsApp" checked> WhatsApp</label>
+          <label><input type="radio" name="via" value="Llamada"> Llamada</label>
+          <label><input type="radio" name="via" value="Email"> Email</label>
+        </div>
+        <button class="btn btn-accent" type="submit">Enviar mensaje</button>
+        <p class="form-note">Respuesta en menos de 24 horas hábiles.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="sec wrap" id="contacto">
+  <div class="sec-head"><h2>Contacto</h2></div>
+  <div class="contact-grid">
+    <div class="contact-cta">
+      <div>
+        <h2>Construyamos algo memorable.</h2>
+        <p>Estoy en Bogotá, Colombia — disponible para proyectos y colaboraciones.</p>
+      </div>
+      <div class="socials">
+        <a href="https://wa.me/573112228359" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.11.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.34c0-4.54 3.7-8.24 8.25-8.24zm4.71 11.62c-.06-.1-.21-.16-.45-.28-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.64-1.19-1.42-1.33-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14z"/></svg>
+        </a>
+        <a href="mailto:yulianamkt@outlook.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 8L3.5 7h17z" fill-rule="evenodd"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yulianan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11.1 21 14.3V21h-4v-5.9c0-1.4-.03-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1V21H9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="ci-list">
+      <div class="ci-row">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg></span>
+        <div><div class="lab">Teléfono / WhatsApp</div><a class="val" href="tel:+573112228359">+57 311 222 8359</a></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <div><div class="lab">Email</div><a class="val" href="mailto:yulianamkt@outlook.com">yulianamkt@outlook.com</a></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M7 10v6M7 7v.01M11 16v-3a2 2 0 0 1 4 0v3M11 16v-6"/></svg></span>
+        <div><div class="lab">LinkedIn</div><a class="val" href="https://www.linkedin.com/in/yulianan/" target="_blank" rel="noopener">linkedin.com/in/yulianan</a></div>
+      </div>
+      <div class="ci-row">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <div><div class="lab">Ubicación</div><span class="val">Bogotá, Colombia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap foot">
+    <a class="logo" href="#top">
+      <span class="mark">YN</span>
+      <span class="name">Yuliana&nbsp;Navarro<small>Comunicación · Marketing</small></span>
+    </a>
+    <nav class="links" style="display:flex">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="tel" href="tel:+573112228359" style="display:flex">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
+      311&nbsp;222&nbsp;8359
+    </a>
+  </div>
+  <div class="wrap copy">© 2026 Yuliana Navarro · Bogotá, Colombia</div>
+</footer>
+
+<script>
+  const tabs=document.querySelectorAll('#tabs .tab');
+  const panels=document.querySelectorAll('.about-grid .panel');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelector('.panel[data-panel="'+t.dataset.tab+'"]').classList.add('active');
+  }));
+  document.getElementById('consultForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const btn=this.querySelector('button[type=submit]');
+    btn.textContent='¡Gracias! Te contacto pronto ✓';
+    setTimeout(()=>{btn.textContent='Enviar mensaje';},3500);
+    this.reset();
+  });
+  document.getElementById('burger').addEventListener('click',()=>{
+    const links=document.querySelector('header.site nav.links');
+    const open=links.style.display==='flex';
+    links.style.cssText=open?'':'display:flex;position:absolute;top:78px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line)';
+  });
+
+  // Scroll reveal with stagger
+  if(matchMedia('(prefers-reduced-motion: no-preference)').matches){
+    const sel='.sec-head, .about-intro, .exp-list li, .acc, .area-chips span, .creds, .svc, .proj, .form-band, .contact-cta, .ci-row';
+    const items=[...document.querySelectorAll(sel)];
+    items.forEach(el=>el.classList.add('reveal'));
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const sibs=[...(e.target.parentElement?.children||[])].filter(c=>c.classList.contains('reveal'));
+          const i=Math.max(0,sibs.indexOf(e.target));
+          e.target.style.transitionDelay=Math.min(i*70,420)+'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    items.forEach(el=>io.observe(el));
+  }
+</script>
+</body>
+</html>
