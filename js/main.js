@@ -13,10 +13,17 @@
     setTimeout(()=>{btn.textContent='Enviar mensaje';},3500);
     this.reset();
   });
-  document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('burger').addEventListener('click',function(){
     const links=document.querySelector('header.site nav.links');
-    const open=links.style.display==='flex';
-    links.style.cssText=open?'':'display:flex;position:absolute;top:78px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line)';
+    const burger=this;
+    links.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  document.querySelectorAll('header.site nav.links a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      document.querySelector('header.site nav.links').classList.remove('open');
+      document.getElementById('burger').classList.remove('open');
+    });
   });
 
   // Scroll reveal with stagger
