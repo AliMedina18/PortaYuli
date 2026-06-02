@@ -61,7 +61,6 @@ Todos estos colores están definidos como variables CSS en `css/styles.css` y pu
 
 ## Notas
 
-- El archivo antiguo "Portafolio Yuliana Navarro.html" se ha dejado como respaldo
 - Todos los enlaces apuntan a las nuevas rutas de archivos
 - La paleta de colores se aplica uniformemente en todo el sitio
 - El diseño es responsive y funciona en dispositivos móviles
